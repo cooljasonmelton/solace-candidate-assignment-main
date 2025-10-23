@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { Advocate } from "./types";
+import { getFilterAdvocates } from "./utils";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
+  const hasFetchedRef = useRef(false);
   useEffect(() => {
+    // prevent double fetching onload caused by strict mode
+    // docs: https://react.dev/reference/react/StrictMode#fixing-bugs-found-by-double-rendering-in-development
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     console.log("fetching advocates...");
     fetch("/api/advocates").then((response) => {
       response.json().then((jsonResponse) => {
@@ -19,28 +27,16 @@ export default function Home() {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-
-    document.getElementById("search-term").innerHTML = searchTerm;
+    setSearchTerm(searchTerm);
 
     console.log("filtering advocates...");
-    const filteredAdvocates = advocates.filter((advocate) => {
-      const normalizedYearsOfExperience = String(advocate.yearsOfExperience);
-      return (
-        advocate.firstName.includes(searchTerm) ||
-        advocate.lastName.includes(searchTerm) ||
-        advocate.city.includes(searchTerm) ||
-        advocate.degree.includes(searchTerm) ||
-        advocate.specialties.includes(searchTerm) ||
-        normalizedYearsOfExperience.includes(searchTerm)
-      );
-    });
-
+    const filteredAdvocates = getFilterAdvocates(advocates, searchTerm);
     setFilteredAdvocates(filteredAdvocates);
   };
 
-  const onClick = () => {
-    console.log(advocates);
+  const handleResetSearch = () => {
     setFilteredAdvocates(advocates);
+    setSearchTerm("");
   };
 
   return (
@@ -50,11 +46,22 @@ export default function Home() {
       <br />
       <div>
         <p>Search</p>
-        <p>
-          Searching for: <span id="search-term"></span>
-        </p>
-        <input style={{ border: "1px solid black" }} onChange={onChange} />
-        <button onClick={onClick}>Reset Search</button>
+        <form
+          role="search"
+          aria-label="search for practictioner"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <label htmlFor="search-input">Searching for: </label>
+          <input
+            id="search-input"
+            type="search"
+            value={searchTerm}
+            onChange={onChange}
+            style={{ border: "1px solid black" }}
+            placeholder="name, city, specialty, etc."
+          />
+        </form>
+        <button onClick={handleResetSearch}>Reset Search</button>
       </div>
       <br />
       <br />
@@ -79,8 +86,8 @@ export default function Home() {
                 <td>{advocate.city}</td>
                 <td>{advocate.degree}</td>
                 <td>
-                  {advocate.specialties.map((specialty, i) => (
-                    <div key={`${specialty}-${i}`}>{specialty}</div>
+                  {advocate.specialties.map((specialty) => (
+                    <div key={`${specialty}-${advocate.id}`}>{specialty}</div>
                   ))}
                 </td>
                 <td>{advocate.yearsOfExperience}</td>
