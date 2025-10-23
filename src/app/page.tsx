@@ -40,10 +40,8 @@ export default function Home() {
   };
 
   return (
-    <main style={{ margin: "24px" }}>
+    <main>
       <h1>Solace Advocates</h1>
-      <br />
-      <br />
       <div>
         <p>Search</p>
         <form
@@ -57,14 +55,11 @@ export default function Home() {
             type="search"
             value={searchTerm}
             onChange={onChange}
-            style={{ border: "1px solid black" }}
             placeholder="name, city, specialty, etc."
           />
         </form>
         <button onClick={handleResetSearch}>Reset Search</button>
       </div>
-      <br />
-      <br />
       <table>
         <thead>
           <tr>
