@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { Advocate } from "./types";
 import { getFilterAdvocates } from "./utils";
 
@@ -9,7 +9,13 @@ export default function Home() {
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
+  const hasFetchedRef = useRef(false);
   useEffect(() => {
+    // prevent double fetching onload caused by strict mode
+    // docs: https://react.dev/reference/react/StrictMode#fixing-bugs-found-by-double-rendering-in-development
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     console.log("fetching advocates...");
     fetch("/api/advocates").then((response) => {
       response.json().then((jsonResponse) => {
@@ -30,8 +36,9 @@ export default function Home() {
     setFilteredAdvocates(filteredAdvocates);
   };
 
-  const onClick = () => {
+  const handleResetSearch = () => {
     setFilteredAdvocates(advocates);
+    setSearchTerm("");
   };
 
   return (
@@ -45,7 +52,7 @@ export default function Home() {
           Searching for: <span id="search-term">{searchTerm}</span>
         </p>
         <input style={{ border: "1px solid black" }} onChange={onChange} />
-        <button onClick={onClick}>Reset Search</button>
+        <button onClick={handleResetSearch}>Reset Search</button>
       </div>
       <br />
       <br />
@@ -70,8 +77,8 @@ export default function Home() {
                 <td>{advocate.city}</td>
                 <td>{advocate.degree}</td>
                 <td>
-                  {advocate.specialties.map((specialty, i) => (
-                    <div key={`${specialty}-${i}`}>{specialty}</div>
+                  {advocate.specialties.map((specialty) => (
+                    <div key={`${specialty}-${advocate.id}`}>{specialty}</div>
                   ))}
                 </td>
                 <td>{advocate.yearsOfExperience}</td>
