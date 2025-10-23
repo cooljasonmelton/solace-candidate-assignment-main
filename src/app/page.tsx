@@ -30,9 +30,7 @@ export default function Home() {
     setSearchTerm(searchTerm);
 
     console.log("filtering advocates...");
-
     const filteredAdvocates = getFilterAdvocates(advocates, searchTerm);
-
     setFilteredAdvocates(filteredAdvocates);
   };
 
@@ -48,10 +46,21 @@ export default function Home() {
       <br />
       <div>
         <p>Search</p>
-        <p>
-          Searching for: <span id="search-term">{searchTerm}</span>
-        </p>
-        <input style={{ border: "1px solid black" }} onChange={onChange} />
+        <form
+          role="search"
+          aria-label="search for practictioner"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <label htmlFor="search-input">Searching for: </label>
+          <input
+            id="search-input"
+            type="search"
+            value={searchTerm}
+            onChange={onChange}
+            style={{ border: "1px solid black" }}
+            placeholder="name, city, specialty, etc."
+          />
+        </form>
         <button onClick={handleResetSearch}>Reset Search</button>
       </div>
       <br />
