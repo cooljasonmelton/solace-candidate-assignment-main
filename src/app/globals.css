@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Color tokens derived from https://www.solace.health/ */
+:root {
+  --bg: #f4f8f7;
+  --surface: #d4e2dd;
+  --card: #ffffff;
+  --text: #000000;
+  --muted: #5a5a5a;
+  --border: #1d4339;
+  --bg-primary: #265b4e;
+  --border-primary: #285e50;
+  --bg-accent: #d7a13b;
+  --border-accent: #e9cc95;
+  --border-ghost: #d4e2dd;
+  --bg-ghost: #ffffff;
+  --bg-ghost-hov: #e9f0ee;
+  --bg-accent-gradient: linear-gradient(45deg, #deb260, #d39009);
+}
+
+@font-face {
+  font-family: "Mollie Glaston";
+  src: url("/fonts/MollieGlaston-Regular.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}

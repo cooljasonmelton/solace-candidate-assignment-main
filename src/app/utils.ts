@@ -34,3 +34,16 @@ export function getFilterAdvocates(advocates: Advocate[], searchTerm: string) {
     return haystack.includes(needle);
   });
 }
+
+export function formatPhoneNumber(value: string | number) {
+  const digits = String(value).replace(/\D/g, "");
+  if (digits.length !== 10) {
+    return String(value);
+  }
+
+  const area = digits.slice(0, 3);
+  const prefix = digits.slice(3, 6);
+  const line = digits.slice(6);
+
+  return `(${area}) ${prefix}-${line}`;
+}
