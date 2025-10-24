@@ -38,6 +38,7 @@ I considered a lot of potential improvements and picked out what I thought would
 
 ### Nice-to-have
 
+- <b>Documentation:</b> Someone needs to explain all this stuff, lol
 - <b>Sticky search bar:</b> I thought this would be a nice idea, but didn't want to go down a rabbit hole making it look decent.
 - <b>Fix annoying warning:</b> Seems to be coming from Tailwind's @base
   `​​Error in parsing value for ‘-webkit-text-size-adjust’.  Declaration dropped.`
