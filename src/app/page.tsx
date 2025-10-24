@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <main className="bg-bg text-text">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 pb-16 pt-8 md:pt-20">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-8 md:pt-20">
         <section className="space-y-3 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-muted">
             Find a practitioner
@@ -55,7 +55,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="space-y-4 rounded-xl2 border border-border bg-accent-gradient text-text p-6 md:p-8">
+        <section className="space-y-4 rounded-xl2 border border-border bg-accent-gradient text-text shadow-float p-6 md:p-8">
           <h2 className="text-lg font-semibold text-text">Search Advocates</h2>
           <form
             role="search"

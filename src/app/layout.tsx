@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " bg-bg"}>
+      <body className={inter.className + " bg-bg px-6"}>
         <header className="bg-card text-primary-bg border-b border-primary-border rounded-lg max-w-6xl mx-auto mt-4 py-2 px-4 shadow-float">
           <div className="flex items-center">
             <h1>
