@@ -10,9 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "accent-gradient": "var(--bg-accent-gradient)",
       },
       colors: {
         bg: "var(--bg)",
@@ -26,19 +24,23 @@ const config: Config = {
           border: "var(--border-primary)",
         },
         accent: {
-          bg: "var(--bg-accent)",
           border: "var(--border-accent)",
+          gradient: "var(--bg-accent-gradient)",
         },
         ghost: {
           bg: "var(--bg-ghost)",
           border: "var(--border-ghost)",
+          hov: "var(--bg-ghost-hov)",
         },
       },
+
       borderRadius: {
         xl2: "1rem",
       },
       boxShadow: {
         card: "0 8px 24px rgba(0,0,0,0.06)",
+        tile: "0 2px 8px 2px #e9e9e9",
+        hovTile: "0 0 20px -1px #d4e2dd4d,0 2px 6px 0 #1d4339",
         float:
           "0 4px 6px -4px rgba(0,0,0,0.1), 0 10px 15px -3px rgba(0,0,0,0.1)",
       },
