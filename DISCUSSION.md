@@ -7,13 +7,13 @@
 - cloned repo, got the dev server and backend running
 - noted runtime errors, skimmed code, used Codex AI to generate a report summarizing how everything works, organization, and any glaring issues
 - created a Google doc to carve out what I could accomplish in 2 hours, breaking issues into three 'tickets':
-  - 1. fix runtime errors, improve TypeScript
-  - 2. improve (unfortunately, not perfect) search form logic, fix double fetch onload
-  - 3. improve design/styling, add reusable style tokens/classes
+  - fix runtime errors, improve TypeScript
+  - improve (unfortunately, not perfect) search form logic, fix double fetch onload
+  - improve design/styling, add reusable style tokens/classes
 - implement this plan with one PR for each 'ticket':
-  - 1. https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/1
-  - 2. https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/2
-  - 3. https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/3
+  - https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/1
+  - https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/2
+  - https://github.com/cooljasonmelton/solace-candidate-assignment-main/pull/3
 
 ## Going Forward
 
