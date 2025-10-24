@@ -90,8 +90,8 @@ export default function Home() {
         </section>
 
         <section className="rounded-xl2 border border-border bg-card shadow-float">
-          <table className="min-w-full divide-y divide-border">
-            <thead className="sticky top-0 z-10 bg-surface text-left text-sm font-semibold uppercase tracking-wide text-muted/80">
+          <table className="rounded-xl2 border-0 min-w-full overflow-hidden">
+            <thead className="sticky top-0 z-10 bg-surface text-left text-sm font-semibold uppercase text-muted/80">
               <tr>
                 <th className="px-5 py-4">First Name</th>
                 <th className="px-5 py-4">Last Name</th>
@@ -138,7 +138,7 @@ export default function Home() {
           </table>
           {filteredAdvocates.length === 0 && (
             <p className="px-5 py-6 text-center text-sm text-muted">
-              No advocates match your search just yet—try a different keyword.
+              No advocates match your search—try a different keyword.
             </p>
           )}
         </section>
