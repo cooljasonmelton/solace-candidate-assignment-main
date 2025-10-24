@@ -17,14 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="bg-accent border-b border-border">
-          <div className="container-page h-16 flex items-center">
-            <a
-              href="/"
-              className="font-display text-lg font-semibold tracking-tight"
-            >
-              Solace Advocates
-            </a>
+        <header className="bg-card text-primary-bg border-b border-primary-border rounded-lg mx-16 mt-4 py-2 px-4 shadow-float">
+          <div className="flex items-center">
+            <h1>
+              <a href="/" className="font-display text-2xl tracking-normal">
+                Solace
+              </a>
+            </h1>
           </div>
         </header>
 
