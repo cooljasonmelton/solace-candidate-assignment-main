@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { Advocate } from "./types";
-import { getFilterAdvocates } from "./utils";
+import { formatPhoneNumber, getFilterAdvocates } from "./utils";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
@@ -89,9 +89,9 @@ export default function Home() {
           </form>
         </section>
 
-        <section className="overflow-hidden rounded-xl2 border border-border bg-card shadow-float">
+        <section className="rounded-xl2 border border-border bg-card shadow-float">
           <table className="min-w-full divide-y divide-border">
-            <thead className="bg-surface text-left text-sm font-semibold uppercase tracking-wide text-muted/80">
+            <thead className="sticky top-0 z-10 bg-surface text-left text-sm font-semibold uppercase tracking-wide text-muted/80">
               <tr>
                 <th className="px-5 py-4">First Name</th>
                 <th className="px-5 py-4">Last Name</th>
@@ -126,11 +126,11 @@ export default function Home() {
                       ))}
                     </div>
                   </td>
-                  <td className="px-5 py-4 text-muted">
+                  <td className="px-5 py-4 text-muted text-center">
                     {advocate.yearsOfExperience}
                   </td>
-                  <td className="px-5 py-4 text-primary-bg">
-                    {advocate.phoneNumber}
+                  <td className="px-5 py-4 text-primary-bg whitespace-nowrap">
+                    {formatPhoneNumber(advocate.phoneNumber)}
                   </td>
                 </tr>
               ))}
