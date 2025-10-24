@@ -4,8 +4,6 @@
 
 ## Approach
 
-Here's the broad strokes of my approach to the tech assessment:
-
 - cloned repo, got the dev server and backend running
 - noted runtime errors, skimmed code, used Codex AI to generate a report summarizing how everything works, organization, and any glaring issues
 - created a Google doc to carve out what I could accomplish in 2 hours, breaking issues into three 'tickets':
